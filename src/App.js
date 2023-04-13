@@ -30,12 +30,21 @@ const Playlistt = new mongoose.model("Playlist", playlistSchema)
 
 
 // Create or Insert document
-const reactPlaylist = new Playlistt({
-    name: "React JS",
-    cType: "Front End",
-    videos: 81,
-    author: "TT",
-    active: true,
-})
+const createDocument = async () => {
+    try {
+        const reactPlaylist = new Playlistt({
+            name: "Node JS",
+            cType: "Back End",
+            videos: 51,
+            author: "TT",
+            active: true,
+        })
+        
+        const saveToDb = await reactPlaylist.save()
+        console.log(saveToDb)
+    } catch(err) {
+        console.log(err)
+    }
+}
 
-reactPlaylist.save()
+createDocument()
